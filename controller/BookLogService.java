@@ -12,6 +12,7 @@ public class BookLogService {
 
 	private static BookLogService instance = new BookLogService();
 	private ArrayList<BookLogOne> BookLogList = new ArrayList<BookLogOne>();
+	private ArrayList<BookInfo> bookInfoList = new ArrayList<BookInfo>();
 
 	private BookLogService() {
 	}
@@ -39,6 +40,7 @@ public class BookLogService {
 
 	// 2. 책 제목 검색
 //	public BookLogOne getbookName(String bName) throws BookLogNotFoundException {
+//		int count = BookLogList.size();
 //		
 //		for (int i=0; i<BookLogList.size(); i++) {
 //			if (BookLogList.get(i).getBookName().equals(bName)) {
@@ -47,25 +49,38 @@ public class BookLogService {
 //		} throw new BookLogNotFoundException("해당 제목의 책이 없습니다.");
 //	}
 
-	public BookLogOne getbookName(String bookName) throws BookLogNotFoundException {
-		for (BookLogOne b : BookLogList) {
-			if (b.getBookName().equals(bookName)) {
-				return b;
+	private static BookHave Books = new BookHave();
+	
+//	public BookLogOne getbookName(String bookName) throws BookLogNotFoundException {
+//		for (BookLogOne b : BookLogList) {
+//			if (b.getBookName().equals(bookName)) {
+//				return b;
+//			}
+//		}
+//		throw new BookLogNotFoundException("입력한 책은 존재하지 않습니다");
+//	}
+	
+	public BookHave getbookName(String bookName) throws BookLogNotFoundException {
+		int count = BookLogList.size();
+		
+		for (int i=0; i<count; i++) {
+			if (BookLogList.get(i).getBookName().equals(bookName)) {
+				return BookLogList.get(i).getBookName();
 			}
 		}
-		throw new BookLogNotFoundException("입력한 책은 존재하지 않습니다");
-	}
-
-	private ArrayList<BookInfo> bookInfoList = new ArrayList<BookInfo>();
+			throw new BookLogNotFoundException("해당 책을 찾을 수 없습니다.");
+		}
+		
 
 	// 3. 모든 장르 검색
 	public ArrayList<BookInfo> getBookGenreList() {
 		return bookInfoList;
 	}
-
-//	public ArrayList<BookLogOne> getBookLogList() {
-//		return BookLogList;
+	
+//	public BookInfo getBookGenreList() {
+//		return bookInfoList;
 //	}
+
 
 	// 4. 장르 검색하면 책 이름 나오게
 	public ArrayList<String> getBookGenre(String bookGenre) throws BookLogNotFoundException {
@@ -93,25 +108,33 @@ public class BookLogService {
 		}
 		throw new BookLogNotFoundException("해당 책이 존재하지 않습니다");
 	}
-	
-	
+
 	// 6. 북로그 기록 삭제
-//	public boolean deleteLogName(String logName) {
-//		
-//		BookLogOne log = null;
-//		int count = BookLogList.size();
-//		
-//		for (int i=0; i<count; i++) {
-//			log = BookLogList.get(i);
-//			
-//			if (BookLogOne.getLogName().equals(logName)) {
+//	public void deleteLogName(String logName) throws BookLogNotFoundException {
+//
+//		for (int i=0; i<BookLogList.size(); i++) {
+//			if (BookLogList.get(i).getLogName().equals(logName)) {
 //				BookLogList.remove(i);
-//				return true;
-//			} 
-//		return false;
+//				return;
+//			}
+//		} throw new BookLogNotFoundException("해당 페이지가 없습니다");
 //	}
 
-	
-	
-	
+	// 6. 북로그 기록 삭제
+	public boolean deleteLogName(String logName) {
+
+		BookLogOne log = null;
+		int count = BookLogList.size();
+
+		for (int i = 0; i < count; i++) {
+			log = BookLogList.get(i);
+
+			if (log.getLogName().equals(logName)) {
+				BookLogList.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+
 }

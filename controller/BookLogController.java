@@ -68,22 +68,6 @@ public class BookLogController {
 		return null;
 	}
 	
-	// 5. 북로그 페이지 검색
-//	public BookLogOne logInfoRead(String logName) {
-//		try {
-//			EndView.logNameView(service.logInfoRead(logName));
-//		} catch (BookLogNotFoundException e) {
-//			EndFailView.failView(e.getMessage());
-//		}
-//	}
-	
-//	public void getBookName(String bookName) {
-//		try {
-//			EndView.BookLogListView(service.getbookName(bookName));
-//		} catch (BookLogNotFoundException e) {
-//			EndFailView.failView(e.getMessage());
-//		}
-//	}
 
 	// 5. 북로그 페이지 검색
 	public void logInfoRead(String logName) {
@@ -96,7 +80,7 @@ public class BookLogController {
 
 	
 	// 6. 북로그 페이지 삭제
-	public static void deleteLogName(String logName) {
+	public void deleteLogName(String logName) {
 		if (logName != null) {
 			boolean result = service.deleteLogName(logName);
 			
@@ -110,6 +94,6 @@ public class BookLogController {
 		}
 	}
 	
-
+	
 	
 }

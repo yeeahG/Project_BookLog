@@ -12,7 +12,7 @@ public class EndView {
 	// 1. 모든 책 검색
 	public static void BookLogListView(ArrayList<BookLogOne> allBookLog) {
 		if (allBookLog != null) {
-			for (int i = 0; i < allBookLog.size(); i++) {
+			for (int i=0; i<allBookLog.size(); i++) {
 				if (allBookLog.get(i) != null) {
 					System.out.println(allBookLog.get(i));
 				}
@@ -23,7 +23,7 @@ public class EndView {
 	}
 
 	// 2. 책 제목 검색
-	public static void BookNameView(BookLogOne bookName) {
+	public static void BookNameView(BookHave bookName) {
 		if (bookName != null) {
 			System.out.println(bookName);
 		} else {
@@ -32,8 +32,21 @@ public class EndView {
 	}
 
 	// 3. 모든 장르 검색
+//	public static void BookGenreListView(ArrayList<BookInfo> bookGenreList) {
+//		System.out.println(bookGenreList);
+//	}
+	
+	// 3. 모든 장르 검색
 	public static void BookGenreListView(ArrayList<BookInfo> bookGenreList) {
-		System.out.println(bookGenreList);
+		if (bookGenreList != null) {
+			for (int i=0; i<bookGenreList.size(); i++) {
+				if (bookGenreList.get(i) != null) {
+					System.out.println(bookGenreList.get(i));
+				}
+			}
+		} else {
+			System.out.println("해당 장르가 존재하지 않습니다");
+		}
 	}
 
 	

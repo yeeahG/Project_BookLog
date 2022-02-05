@@ -79,7 +79,7 @@ public class StartView {
 			} else if ( i == 6 ) {
 				System.out.println("--삭제하고 싶은 page를 입력하세요");
 				String logName = sc1.nextLine();
-				System.out.println("\n 5. " + logName + "를 삭제하였습니다");
+				System.out.println("\n " + logName + "를 삭제하였습니다");
 				controller.deleteLogName(logName);
 				controller.getBookLogList();
 			}
